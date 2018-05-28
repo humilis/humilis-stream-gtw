@@ -9,6 +9,7 @@ import time
 def transform(event, context):
     """Sample Firehose transform."""
     output = []
+    print(json.dumps(event, indent=4))
     if "body" in event:
         # We are calling this from the REST API
         event = event["body"]

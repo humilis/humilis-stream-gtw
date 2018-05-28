@@ -9,10 +9,6 @@ humilis-stream-gtw:
         - layer: transform
           layer_type: microservice
           runtime: python2.7
-          iam_role_policies:
-            - {% include "policies/kms-decrypt.json" %}
-          lambda_environment:
-            GLOBAL_VAR: GLOBAL_VAL
           resources:
               - description: "Identity Transform"
                 path: identity
@@ -40,6 +36,11 @@ humilis-stream-gtw:
               # Deliver all raw input events to S3
               - name: DStream1
                 s3_prefix: dstream1/json/
+          processor_arn:
+              $layer_output:
+                  layer_name: transform
+                  output_name: LambdaArn1
+          processor_buffer_interval_in_seconds: 60
 
         - layer: strgtw
           layer_type: stream-gtw
