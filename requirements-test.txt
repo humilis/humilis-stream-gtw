@@ -1,0 +1,11 @@
+# test requirements
+boto3
+pytest
+pyyaml
+mock
+tox
+
+-e .
+git+https://github.com/humilis/humilis-microservice
+git+https://github.com/humilis/humilis-streams
+git+https://github.com/humilis/humilis-firehose

@@ -1,0 +1,12 @@
+---
+outputs:
+    BucketName:
+        Description: The name of the S3 bucket
+        Value:
+            Ref: Bucket
+    {% if bucket_policy %}
+    BucketPolicy:
+        Description: The name of the bucket policy
+        Value:
+            Ref: BucketPolicy
+    {% endif %}

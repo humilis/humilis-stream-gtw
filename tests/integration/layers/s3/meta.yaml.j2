@@ -1,0 +1,18 @@
+---
+meta:
+    description:
+        Creates a S3 bucket and (optionally) a bucket policy
+
+    parameters:
+        bucket_name:
+            value:
+                {{_env.name.lower()}}
+            description:
+                The name of the S3 bucket
+        bucket_policy:
+            value:
+            description: A policy to attach to the bucket
+        ttl:
+            value:
+            description:
+                The ttl of the S3 bucket in days

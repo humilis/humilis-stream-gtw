@@ -1,0 +1,62 @@
+---
+humilis-stream-gtw:
+    description:
+        A dummy environment used for testing the stream-gtw plugin.
+
+    layers:
+        - layer: s3
+
+        - layer: transform
+          layer_type: microservice
+          runtime: python2.7
+          iam_role_policies:
+            - {% include "policies/kms-decrypt.json" %}
+          lambda_environment:
+            GLOBAL_VAR: GLOBAL_VAL
+          resources:
+              - description: "Identity Transform"
+                path: identity
+                api_key_required: yes
+                handler: "mypkg:transform"
+                lambda_dependencies:
+                    - mycode/mypkg
+
+        - layer: kinesis
+          layer_type: streams
+          streams:
+           - name: Stream1
+             shard_count: 1
+           - name: Stream2
+             shard_count: 1
+
+        - layer: firehose
+          layer_type: firehose
+          s3_buffer_seconds: 60
+          s3_bucket_name:
+            $layer_output:
+                layer_name: s3
+                output_name: BucketName
+          delivery_streams:
+              # Deliver all raw input events to S3
+              - name: DStream1
+                s3_prefix: dstream1/json/
+
+        - layer: strgtw
+          layer_type: stream-gtw
+          certificate_arn: "arn:aws:acm:us-east-1:531820706523:certificate/220d535a-69fc-4e06-b5a0-dd0169d773b5"
+          sent_at_path: sentAt
+          api_resources:
+            - path: nfhbe
+              request_parameters:
+                "querystring.hello": yes
+                "querystring.world": yes
+            - path: zedek/v1/import
+              delivery_stream_name:
+                $layer_output:
+                    layer_name: firehose
+                    output_name: DStream1
+
+          stream_name:
+            $layer_output:
+                layer_name: kinesis
+                output_name: Stream1

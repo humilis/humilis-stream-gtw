@@ -1,0 +1,22 @@
+---
+resources:
+    Bucket:
+        Type: 'AWS::S3::Bucket'
+        {# Use a random name for the bucket #}
+        Properties:
+            BucketName: {{bucket_name}}-{{_env.stage.lower()}}
+            {% if ttl %}
+            LifecycleConfiguration:
+                Rules:
+                    - ExpirationInDays: {{ttl}}
+                      Status: Enabled
+            {% endif %}
+    {% if bucket_policy %}
+    BucketPolicy:
+        Type: 'AWS::S3::BucketPolicy'
+        Properties:
+            Bucket:
+                Ref: Bucket
+            PolicyDocument:
+                {{bucket_policy}}
+    {% endif %}
