@@ -41,7 +41,7 @@ resources:
         KeyType: API_KEY
         UsagePlanId: {Ref: UsagePlan}
 
-    {% for key in client_keys %}
+    {% for key in (client_keys or []) %}
     ApiKey{{key.name.title()}}:
       Type: "AWS::ApiGateway::ApiKey"
       DependsOn:

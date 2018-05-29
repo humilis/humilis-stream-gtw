@@ -18,7 +18,7 @@ outputs:
             The key associated to the REST API {{__context.stage}} deployment
         Value: {Ref: ApiKey}
 
-    {% for key in client_keys %}
+    {% for key in (client_keys or []) %}
         Description:
             Key to {{__context.stage}} for {{key.name}} client
         Value: {Ref: ApiKey{{key.name.title()}}}
