@@ -482,7 +482,11 @@ resources:
                          {% endif %}
                       }
                    ],
+                   {% if resource.stream_name or (not resource.delivery_stream_name and stream_name) %}
                    "StreamName": "{{resource.stream_name or stream_name}}"
+                   {% else %}
+                   "DeliveryStreamName": "{{resource.delivery_stream_name or delivery_stream_name}}"
+                   {% endif %}
                 }
             {% endif %}
     {% endif %}
