@@ -323,6 +323,7 @@ resources:
                       #set($payload = $payload + ',')
                       #end
                       #end
+                      #set($payload = $payload + '"receivedAt" : ' + "$context.requestTimeEpoch")
                       #set($payload = $payload.replaceAll("\\'","'") + '}'
                       {% if resource.delivery_stream_name or (not resource.stream_name and delivery_stream_name) %}
                       + "
@@ -421,7 +422,7 @@ resources:
                       {% if resource.sent_at_path or sent_at_path %}
                       ', "sentAt" : "' + $input.path('$.{{resource.sent_at_path or sent_at_path}}') +
                       {% endif %}
-                      '", "context" : {"apiId" : "' + "$context.apiId" + '", "httpMethod" : "' + "$context.httpMethod" + '", "stage" : "' + "$context.stage" + '", "requestId" : "' + "$context.requestId" + '", "resourcePath" : "'+ "$context.resourcePath" + '", "resourceId" : "' + "$context.resourceId" + '", "identity" : {"sourceIp" : "' + "$context.identity.sourceIp" + '", "userAgent" : "' + "$context.identity.userAgent" + '", "apiKey" : "' + "$context.identity.apiKey" + '", "country" : "' + "$input.params('CloudFront-Viewer-Country')" + '", "isMobile" : ' + "$input.params('CloudFront-Is-Mobile-Viewer')" + ', "isDesktop" : ' + "$input.params('CloudFront-Is-Desktop-Viewer')" + ', "isTablet" : ' + "$input.params('CloudFront-Is-Tablet-Viewer')" + '}}}'
+                      '", "context" : {"apiId" : "' + "$context.apiId" + '", "httpMethod" : "' + "$context.httpMethod" + '", "stage" : "' + "$context.stage" + '", "requestId" : "' + "$context.requestId" + '", "resourcePath" : "'+ "$context.resourcePath" + '", "resourceId" : "' + "$context.resourceId" + '", "identity" : {"sourceIp" : "' + "$context.identity.sourceIp" + '", "userAgent" : "' + "$context.identity.userAgent" + '", "apiKey" : "' + "$context.identity.apiKey" + '", "country" : "' + "$input.params('CloudFront-Viewer-Country')" + '", "isMobile" : ' + "$input.params('CloudFront-Is-Mobile-Viewer')" + ', "isDesktop" : ' + "$input.params('CloudFront-Is-Desktop-Viewer')" + ', "isTablet" : ' + "$input.params('CloudFront-Is-Tablet-Viewer')" + '}}, "receivedAt" : ' + $context.requestTimeEpoch + '}'
                       {% if resource.delivery_stream_name or (not resource.stream_name and delivery_stream_name) %}
                       + "
                 "
