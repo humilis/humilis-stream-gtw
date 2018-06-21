@@ -79,7 +79,7 @@ resources:
           {% if key.api_burst_limit %}
           BurstLimit: {{key.api_burst_limit}}
           {% endif %}
-          {% if api_rate_limit %}
+          {% if key.api_rate_limit %}
           RateLimit: {{key.api_rate_limit}}
           {% endif %}
         {% endif %}
