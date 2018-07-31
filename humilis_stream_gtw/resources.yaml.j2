@@ -244,7 +244,11 @@ resources:
       Properties:
         RestApiId: {"Ref": "RestApi"}
         ResourceId: {"Ref": "Resource{{resid.title()}}"}
+        {% if resource.api_key_required %}
+        ApiKeyRequired: {{resource.api_key_required}}
+        {% else %}
         ApiKeyRequired: {{api_key_required}}
+        {% endif %}
         HttpMethod: GET
         AuthorizationType: NONE
         MethodResponses:
@@ -352,7 +356,11 @@ resources:
       Properties:
         RestApiId: {"Ref": "RestApi"}
         ResourceId: {"Ref": "Resource{{resid.title()}}"}
+        {% if resource.api_key_required %}
+        ApiKeyRequired: {{resource.api_key_required}}
+        {% else %}
         ApiKeyRequired: {{api_key_required}}
+        {% endif %}
         HttpMethod: POST
         AuthorizationType: NONE
         MethodResponses:
