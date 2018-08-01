@@ -244,7 +244,7 @@ resources:
       Properties:
         RestApiId: {"Ref": "RestApi"}
         ResourceId: {"Ref": "Resource{{resid.title()}}"}
-        {% if resource.api_key_required %}
+        {% if resource.get("api_key_required") != None %}
         ApiKeyRequired: {{resource.api_key_required}}
         {% else %}
         ApiKeyRequired: {{api_key_required}}
@@ -356,7 +356,7 @@ resources:
       Properties:
         RestApiId: {"Ref": "RestApi"}
         ResourceId: {"Ref": "Resource{{resid.title()}}"}
-        {% if resource.api_key_required %}
+        {% if resource.get("api_key_required") != None %}
         ApiKeyRequired: {{resource.api_key_required}}
         {% else %}
         ApiKeyRequired: {{api_key_required}}
