@@ -292,16 +292,19 @@ resources:
           PassthroughBehavior: WHEN_NO_TEMPLATES
           IntegrationResponses:
               - StatusCode: 200
+                SelectionPattern: '2\d{2}'
                 ResponseParameters:
                   method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                   method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
                   method.response.header.Access-Control-Allow-Origin: "'*'"
               - StatusCode: 400
+                SelectionPattern: '4\d{2}'
                 ResponseParameters:
                   method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                   method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
                   method.response.header.Access-Control-Allow-Origin: "'*'"
               - StatusCode: 500
+                SelectionPattern: '5\d{2}'
                 ResponseParameters:
                   method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                   method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
@@ -398,16 +401,19 @@ resources:
           PassthroughBehavior: WHEN_NO_TEMPLATES
           IntegrationResponses:
               - StatusCode: 200
+                SelectionPattern: '2\d{2}'
                 ResponseParameters:
                   method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                   method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
                   method.response.header.Access-Control-Allow-Origin: "'*'"
               - StatusCode: 400
+                SelectionPattern: '4\d{2}'
                 ResponseParameters:
                   method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                   method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
                   method.response.header.Access-Control-Allow-Origin: "'*'"
               - StatusCode: 500
+                SelectionPattern: '5\d{2}'
                 ResponseParameters:
                   method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                   method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
