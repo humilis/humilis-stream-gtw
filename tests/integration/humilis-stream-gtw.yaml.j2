@@ -56,6 +56,14 @@ humilis-stream-gtw:
                 $layer_output:
                     layer_name: firehose
                     output_name: DStream1
+            - path: getmethod
+              method: GET
+              response: '{"prefix": "hello/world"}'
+            - path: postmethod
+              method: POST
+              response: '{"prefix": "bye/world"}'
+              response: 'hello/world'
+
 
           stream_name:
             $layer_output:
