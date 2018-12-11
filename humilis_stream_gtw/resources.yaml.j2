@@ -297,6 +297,11 @@ resources:
                   method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                   method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
                   method.response.header.Access-Control-Allow-Origin: "'*'"
+                {% if resource.response %}
+                ResponseTemplates:
+                    "application/json": |
+                        {{resource.response}}
+                {% endif %}
               - StatusCode: 400
                 SelectionPattern: '4\d{2}'
                 ResponseParameters:
@@ -406,6 +411,11 @@ resources:
                   method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                   method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
                   method.response.header.Access-Control-Allow-Origin: "'*'"
+                {% if resource.response %}
+                ResponseTemplates:
+                    "application/json": |
+                        {{resource.response}}
+                {% endif %}
               - StatusCode: 400
                 SelectionPattern: '4\d{2}'
                 ResponseParameters:
