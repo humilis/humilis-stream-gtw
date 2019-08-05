@@ -320,7 +320,7 @@ resources:
                 {
                    "Records": [
                       #set($payload = '{' +
-                      '"context" : {"resourceMeta": "{{resource.meta}}", "apiId" : "' + "$context.apiId" + '", "httpMethod" : "' + "$context.httpMethod" + '", "stage" : "' + "$context.stage" + '", "requestId" : "' + "$context.requestId" + '", "resourcePath" : "'+ "$context.resourcePath" + '", "resourceId" : "' + "$context.resourceId" + '", "identity" : {"sourceIp" : "' + "$context.identity.sourceIp" + '", "userAgent" : "' + "$context.identity.userAgent" + '", "apiKey" : "' + "$context.identity.apiKey" + '", "country" : "' + "$input.params('CloudFront-Viewer-Country')" + '", "isMobile" : ' + "$input.params('CloudFront-Is-Tablet-Viewer')" + ', "isDesktop" : ' + "$input.params('CloudFront-Is-Desktop-Viewer')" + ', "isTablet" : ' + "$input.params('CloudFront-Is-Tablet-Viewer')" + '}},')
+                      '"context" : {"resourceMeta": "{{resource.meta}}", "apiId" : "' + "$context.apiId" + '", "httpMethod" : "' + "$context.httpMethod" + '", "stage" : "' + "$context.stage" + '", "requestId" : "' + "$context.requestId" + '", "resourcePath" : "'+ "$context.resourcePath" + '", "resourceId" : "' + "$context.resourceId" + '", "identity" : {"sourceIp" : "' + "$context.identity.sourceIp" + '", "userAgent" : "' + "$context.identity.userAgent" + '", "apiKey" : "' + "$context.identity.apiKey" + '", "country" : "' + "$input.params('CloudFront-Viewer-Country')" + '", "isMobile" : ' + "$input.params('CloudFront-Is-Tablet-Viewer')" + ', "isDesktop" : ' + "$input.params('CloudFront-Is-Desktop-Viewer')" + ', "isTablet" : ' + "$input.params('CloudFront-Is-Tablet-Viewer')" + '}, "requestParameters": {')
                       #foreach($type in $allParams.keySet())
                       #set($params = $allParams.get($type))
                       #set($payload = $payload + '"' + "$type" + '": {')
@@ -335,7 +335,7 @@ resources:
                       #set($payload = $payload + ',')
                       #end
                       #end
-                      #set($payload = $payload + ', "receivedAt" : ' + "$context.requestTimeEpoch")
+                      #set($payload = $payload + '}}, "receivedAt" : ' + "$context.requestTimeEpoch")
                       #set($payload = $payload.replaceAll("\\'","'") + '}'
                       {% if resource.delivery_stream_name or (not resource.stream_name and delivery_stream_name) %}
                       + "

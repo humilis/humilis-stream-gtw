@@ -42,6 +42,18 @@ humilis-stream-gtw:
                   output_name: LambdaArn1
           processor_buffer_interval_in_seconds: 60
 
+        - layer: firehose2
+          layer_type: firehose
+          s3_buffer_seconds: 60
+          s3_bucket_name:
+            $layer_output:
+                layer_name: s3
+                output_name: BucketName
+          delivery_streams:
+              # Deliver all raw input events to S3
+              - name: DStream2
+                s3_prefix: dstream2/json/
+
         - layer: strgtw
           layer_type: stream-gtw
           certificate_arn: "arn:aws:acm:us-east-1:531820706523:certificate/220d535a-69fc-4e06-b5a0-dd0169d773b5"
@@ -59,6 +71,10 @@ humilis-stream-gtw:
             - path: getmethod
               method: GET
               response: '{"prefix": "hello/world"}'
+              delivery_stream_name:
+                $layer_output:
+                    layer_name: firehose2
+                    output_name: DStream2
             - path: postmethod
               method: POST
               response: '{"prefix": "bye/world"}'
