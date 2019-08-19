@@ -1,4 +1,5 @@
 # test requirements
+docutils==0.14
 boto3
 pytest
 pyyaml==5.1
