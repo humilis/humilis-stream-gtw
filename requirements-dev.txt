@@ -1,5 +1,6 @@
 # dev utilities
 docutils==0.14 # fix version conflict with AWS CLI
+twine
 ipython
 ipdb
 pdbpp
