@@ -22,7 +22,7 @@ test: .env
 
 # remove .tox and .env dirs
 clean:
-	rm -rf .env .tox .cache
+	rm -rf .env .tox .cache dist
 
 # configure humilis
 configure:
