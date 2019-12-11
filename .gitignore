@@ -6,6 +6,7 @@ __pycache__
 .cache
 *.pyc
 dist/
+versions/
 
 # Ignore the symlink
 layers/lambda-pipeline

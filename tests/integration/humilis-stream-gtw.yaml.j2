@@ -58,6 +58,14 @@ humilis-stream-gtw:
           layer_type: stream-gtw
           certificate_arn: "arn:aws:acm:us-east-1:531820706523:certificate/220d535a-69fc-4e06-b5a0-dd0169d773b5"
           sent_at_path: sentAt
+          client_keys:
+            - name: test1
+              api_burst_limit: 5
+              api_rate_limit: 5
+              value: 38f0ecbba74943e5a91a32d4909f41be
+            - name: test2
+              api_burst_limit: 5
+              api_rate_limit: 5
           api_resources:
             - path: nfhbe
               request_parameters:
