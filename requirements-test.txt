@@ -1,6 +1,6 @@
 # test requirements
-docutils==0.14
-boto3
+botocore==1.12.248
+boto3==1.9.244
 pytest
 pyyaml==5.1
 mock

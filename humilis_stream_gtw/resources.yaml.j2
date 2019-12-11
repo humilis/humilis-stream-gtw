@@ -51,6 +51,9 @@ resources:
         Name: "{{__context.environment.name}}-{{__context.layer.name}}-{{key.name}}-{{__context.stage}}"
         Description: "API key for stage client {{key.name}} of environment {{__context.environment.name}}"
         Enabled: "true"
+        {% if key.value %}
+        Value: {{key.value}}
+        {% endif %}
         StageKeys:
           - RestApiId: {"Ref": "RestApi"}
             StageName: "{{__context.stage|lower}}"
