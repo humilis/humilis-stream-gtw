@@ -1,5 +1,8 @@
 # API Gateway to Kinesis and/or Firehose streams
 
+[![PyPI](https://img.shields.io/pypi/v/humilis-stream-gtw.svg?style=flat)](https://pypi.python.org/pypi/humilis-stream-gtw)
+
+
 [humilis]: https://github.com/humilis/humilis
 
 
