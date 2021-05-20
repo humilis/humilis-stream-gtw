@@ -541,6 +541,7 @@ resources:
                 method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
                 method.response.header.Access-Control-Allow-Methods: "'GET,POST,OPTIONS'"
                 method.response.header.Access-Control-Allow-Origin: "'*'"
+                method.response.header.Cache-Control-Max-Age: "'86400'"
               ResponseTemplates:
                 application/json: ''
           PassthroughBehavior: NEVER
@@ -552,6 +553,7 @@ resources:
               method.response.header.Access-Control-Allow-Headers: true
               method.response.header.Access-Control-Allow-Methods: true
               method.response.header.Access-Control-Allow-Origin: true
+              method.response.header.Cache-Control-Max-Age: true
 
     {% endfor %}
 
