@@ -2,8 +2,6 @@
 
 [humilis]: https://github.com/humilis/humilis
 
-__NOTE:__ This _should_ work but is still WIP, better not to use yet
-
 
 ## Installation
 
