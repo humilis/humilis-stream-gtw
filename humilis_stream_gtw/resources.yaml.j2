@@ -47,6 +47,11 @@ resources:
       DependsOn:
         - "RestApiDeployment"
         - "RestApi"
+        {% if loop.previtem %}
+        - "ApiKey{{loop.previtem.name.title()}}"
+        - "UsagePlan{{loop.previtem.name.title()}}"
+        - "UsagePlanKey{{loop.previtem.name.title()}}"
+        {% endif %}
       Properties:
         Name: "{{__context.environment.name}}-{{__context.layer.name}}-{{key.name}}-{{__context.stage}}"
         Description: "API key for stage client {{key.name}} of environment {{__context.environment.name}}"
@@ -63,6 +68,11 @@ resources:
       DependsOn:
         - "RestApiDeployment"
         - "RestApi"
+        {% if loop.previtem %}
+        - "ApiKey{{loop.previtem.name.title()}}"
+        - "UsagePlan{{loop.previtem.name.title()}}"
+        - "UsagePlanKey{{loop.previtem.name.title()}}"
+        {% endif %}
       Properties:
         ApiStages:
             - ApiId: {"Ref": "RestApi"}
@@ -92,6 +102,11 @@ resources:
       DependsOn:
         - "RestApiDeployment"
         - "RestApi"
+        {% if loop.previtem %}
+        - "ApiKey{{loop.previtem.name.title()}}"
+        - "UsagePlan{{loop.previtem.name.title()}}"
+        - "UsagePlanKey{{loop.previtem.name.title()}}"
+        {% endif %}
       Properties:
         KeyId: {Ref: ApiKey{{key.name.title()}}}
         KeyType: API_KEY
