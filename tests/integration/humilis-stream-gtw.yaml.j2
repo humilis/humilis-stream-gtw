@@ -8,7 +8,7 @@ humilis-stream-gtw:
 
         - layer: transform
           layer_type: microservice
-          runtime: python2.7
+          runtime: python3.9
           resources:
               - description: "Identity Transform"
                 path: identity
@@ -64,6 +64,12 @@ humilis-stream-gtw:
               api_rate_limit: 5
               value: 38f0ecbba74943e5a91a32d4909f41be
             - name: test2
+              api_burst_limit: 5
+              api_rate_limit: 5
+            - name: test3
+              api_burst_limit: 5
+              api_rate_limit: 5
+            - name: test4
               api_burst_limit: 5
               api_rate_limit: 5
           api_resources:
